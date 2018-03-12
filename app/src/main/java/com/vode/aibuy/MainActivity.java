@@ -1,50 +1,76 @@
 package com.vode.aibuy;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.vode.aibuy.activity.LoginActivity;
+import com.vode.aibuy.fragment.GoodsFragment;
+import com.vode.aibuy.fragment.MenuFragment;
+import com.vode.aibuy.utils.BottomNavigationViewHelper;
+import com.vode.aibuy.utils.PhoneUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
 
+    public FragmentManager manager;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+            fragmentTransaction= manager.beginTransaction();
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
 
+                    fragmentTransaction.replace(R.id.main_contain,goodsFragment);
+                    fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    fragmentTransaction.replace(R.id.main_contain,menuFragment);
+                    fragmentTransaction.commit();
                     return true;
+                case R.id.navigation_help:
+                    PhoneUtils.callPhone(getApplicationContext(),"10086");
+                    return false;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+
+                    return true;
+                case R.id.navigation_user:
+
                     return true;
             }
+
             return false;
         }
     };
+    public FragmentTransaction fragmentTransaction;
+    public GoodsFragment goodsFragment;
+    public MenuFragment menuFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        manager = getSupportFragmentManager();
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        startActivity(new Intent(this, LoginActivity.class));
+
+        fragmentTransaction = manager.beginTransaction();
+
+        goodsFragment = new GoodsFragment();
+        menuFragment = new MenuFragment();
+        fragmentTransaction.add(R.id.main_contain, goodsFragment);
+        fragmentTransaction.commit();
     }
 
 }

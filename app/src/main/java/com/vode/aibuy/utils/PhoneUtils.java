@@ -35,6 +35,7 @@ public class PhoneUtils {
                     }).show();
         } catch (Exception e) {
             e.printStackTrace();
+            LogUtils.w(e.getMessage());
         }
     }
 

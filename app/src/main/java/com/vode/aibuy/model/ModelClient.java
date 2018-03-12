@@ -1,5 +1,6 @@
 package com.vode.aibuy.model;
 
+import com.vode.aibuy.bean.Goods;
 import com.vode.aibuy.bean.Repo;
 import com.vode.aibuy.bean.User;
 import com.vode.aibuy.utils.RetrofitApi;
@@ -32,6 +33,20 @@ public class ModelClient {
             @Override
             public void onFailure(Call<Repo> call, Throwable t) {
 
+            }
+        });
+    }
+
+    public static void loadGoods(final LoadDataInteface<List<Goods>> loadDataInteface) {
+        retrofit.getGoodsApi().enqueue(new Callback<List<Goods>>() {
+            @Override
+            public void onResponse(Call<List<Goods>> call, Response<List<Goods>> response) {
+                loadDataInteface.onDataLoaded(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Goods>> call, Throwable t) {
+                loadDataInteface.onDataLoadFailed(t);
             }
         });
     }

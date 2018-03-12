@@ -33,7 +33,7 @@ public class BaseApplication extends Application {
         JPushInterface.init(this);*/
 
 
-        Thread.setDefaultUncaughtExceptionHandler (new MyUncaughtExceptionHandler());
+        //Thread.setDefaultUncaughtExceptionHandler (new MyUncaughtExceptionHandler());
     }
 
 
