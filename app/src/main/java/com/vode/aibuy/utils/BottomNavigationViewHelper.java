@@ -5,6 +5,11 @@ import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+
+import com.vode.aibuy.R;
 
 import java.lang.reflect.Field;
 
@@ -31,5 +36,25 @@ public class BottomNavigationViewHelper {
         } catch (IllegalAccessException e) {
             Log.e("BNVHelper", "Unable to change value of shift mode", e);
         }
+    }
+
+    public static TextView addTag(BottomNavigationView navigationView,int pos) {
+        //获取整个的NavigationView
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigationView.getChildAt(0);
+
+        //这里就是获取所添加的每一个Tab(或者叫menu)，
+        View tab = menuView.getChildAt(pos);
+        BottomNavigationItemView itemView = (BottomNavigationItemView) tab;
+
+        //加载我们的角标View，新创建的一个布局
+        View badge = LayoutInflater.from(navigationView.getContext()).inflate(R.layout.menu_badge, menuView, false);
+
+        //添加到Tab上
+        itemView.addView(badge);
+
+        TextView count = badge.findViewById(R.id.tv_msg_count);
+
+        return count;
+
     }
 }

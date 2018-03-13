@@ -14,4 +14,5 @@
     <color name="textlight">#999</color>
     <color name="bgdark">#ddd</color>
     <color name="bglight">#eee</color>
+    <color name="red">#EA4A3E</color>
 </resources>

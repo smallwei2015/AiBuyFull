@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.vode.aibuy.fragment.GoodsFragment;
 import com.vode.aibuy.fragment.MenuFragment;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_help:
-                    PhoneUtils.callPhone(getApplicationContext(),"10086");
+                    PhoneUtils.callPhone(MainActivity.this,"10086");
                     return false;
                 case R.id.navigation_notifications:
 
@@ -62,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
         manager = getSupportFragmentManager();
         BottomNavigationView navigation = findViewById(R.id.navigation);
         BottomNavigationViewHelper.disableShiftMode(navigation);
+        TextView textView = BottomNavigationViewHelper.addTag(navigation, 3);
+        textView.setText("2");
+        textView.setVisibility(View.VISIBLE);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
@@ -72,5 +78,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.main_contain, goodsFragment);
         fragmentTransaction.commit();
     }
+
+
 
 }

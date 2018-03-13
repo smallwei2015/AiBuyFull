@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="normal_img_style">
+        <item name="android:layout_width">@dimen/dp40</item>
+        <item name="android:layout_height">@dimen/dp40</item>
+        <item name="android:padding">@dimen/dp5</item>
+    </style>
+
+    <style name="small_img_style">
+        <item name="android:layout_width">@dimen/dp35</item>
+        <item name="android:layout_height">@dimen/dp35</item>
+        <item name="android:padding">@dimen/dp5</item>
+    </style>
 </resources>
