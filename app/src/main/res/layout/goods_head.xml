@@ -7,5 +7,6 @@
     <ImageView
         android:layout_width="@dimen/dp100"
         android:layout_height="@dimen/dp100"
-        android:id="@+id/img_goods"/>
+        android:id="@+id/img_goods"
+        android:src="@mipmap/ic_launcher"/>
 </android.support.constraint.ConstraintLayout>

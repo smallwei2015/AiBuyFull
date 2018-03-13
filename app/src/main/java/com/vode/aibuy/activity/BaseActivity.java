@@ -75,7 +75,6 @@ public abstract class BaseActivity<V extends MvpView, P extends MvpPresenter<V>>
         initData();
     }
 
-
     public void initTop(int left, String content, int right) {
         initTop(left, content, right, -1);
     }

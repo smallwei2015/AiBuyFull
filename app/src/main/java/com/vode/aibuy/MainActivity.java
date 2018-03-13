@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.vode.aibuy.fragment.GoodsFragment;
+import com.vode.aibuy.fragment.GoodsListFragment;
 import com.vode.aibuy.fragment.MenuFragment;
 import com.vode.aibuy.utils.BottomNavigationViewHelper;
 import com.vode.aibuy.utils.PhoneUtils;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     public FragmentTransaction fragmentTransaction;
-    public GoodsFragment goodsFragment;
+    public GoodsListFragment goodsFragment;
     public MenuFragment menuFragment;
 
     @Override
@@ -73,10 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction = manager.beginTransaction();
 
-        goodsFragment = new GoodsFragment();
+        goodsFragment = new GoodsListFragment();
         menuFragment = new MenuFragment();
         fragmentTransaction.add(R.id.main_contain, goodsFragment);
         fragmentTransaction.commit();
+
+
+        //startActivity(new Intent(this, SearchActivity.class));
     }
 
 

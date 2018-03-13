@@ -93,6 +93,14 @@ public class GoodsFragment extends MvpLceFragment<SwipeRefreshLayout,List<Goods>
         if (data != null) {
             datas.addAll(data);
             adapter.notifyDataSetChanged();
+        }else {
+
+            showContent();
+            adapter.showItemView();
+            Goods e = new Goods();
+            e.setType(0);
+            datas.add(e);
+            adapter.notifyDataSetChanged();
         }
 
     }

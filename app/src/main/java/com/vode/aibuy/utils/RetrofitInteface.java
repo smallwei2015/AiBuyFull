@@ -19,4 +19,8 @@ public interface RetrofitInteface {
 
     @GET("api/data/1")
     Call<List<Goods>> getGoodsApi();
+
+    @GET("api/data/1")
+    Call<List<Goods>> getGoodsBySearchApi();
+
 }

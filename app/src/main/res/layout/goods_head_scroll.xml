@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/goods_title_style"
+        android:id="@+id/title_goods"
+        android:text="@string/title"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp150"
+        android:layout_below="@+id/title_goods"
+        android:background="@color/bglight"
+        android:id="@+id/pager_goods"/>
+    <com.vode.aibuy.userview.IndicatorView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp20"
+        android:layout_below="@+id/pager_goods"
+        android:background="@color/bgdark"/>
+
+
+</RelativeLayout>

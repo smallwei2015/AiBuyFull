@@ -50,4 +50,19 @@ public class ModelClient {
             }
         });
     }
+
+    public static void loadSearchGoods(final LoadDataInteface<List<Goods>> inteface ) {
+
+        retrofit.getGoodsBySearchApi().enqueue(new Callback<List<Goods>>() {
+            @Override
+            public void onResponse(Call<List<Goods>> call, Response<List<Goods>> response) {
+                inteface.onDataLoaded(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Goods>> call, Throwable t) {
+                inteface.onDataLoadFailed(t);
+            }
+        });
+    }
 }

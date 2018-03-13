@@ -46,4 +46,6 @@ dependencies {
         compile 'com.hannesdorfmann.annotatedadapter:support-recyclerview:1.1.1'
         annotationProcessor 'com.hannesdorfmann.annotatedadapter:processor:1.1.1'*/
     implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.youth.banner:banner:1.4.10'
+
 }

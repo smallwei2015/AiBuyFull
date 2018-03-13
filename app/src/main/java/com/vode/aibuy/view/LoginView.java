@@ -8,5 +8,5 @@ import com.vode.aibuy.bean.User;
  */
 
 public interface LoginView extends MvpView {
-    public void loginSucccess(User user);
+    void loginSucccess(User user);
 }

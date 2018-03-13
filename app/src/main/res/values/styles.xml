@@ -19,4 +19,15 @@
         <item name="android:layout_height">@dimen/dp35</item>
         <item name="android:padding">@dimen/dp5</item>
     </style>
+
+
+    <style name="title_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="goods_title_style" parent="title_style">
+        <item name="android:textColor">@color/textmiddle</item>
+        <item name="android:textSize">@dimen/sp18</item>
+        <item name="android:padding">@dimen/dp10</item>
+    </style>
 </resources>
