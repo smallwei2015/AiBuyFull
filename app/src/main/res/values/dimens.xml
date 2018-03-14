@@ -25,4 +25,15 @@
     <dimen name="sp18">18sp</dimen>
     <dimen name="dp150">150dp</dimen>
     <dimen name="dp20">20sp</dimen>
+    <dimen name="dp2">2dp</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="dp3">3dp</dimen>
+    <dimen name="dp60">60dp</dimen>
+    <dimen name="dp80">80dp</dimen>
+    <dimen name="dp040">-40dp</dimen>
+    <dimen name="sp13">13sp</dimen>
+    <dimen name="dp010">-10dp</dimen>
+    <dimen name="sp10">10sp</dimen>
+    <dimen name="sp12">12sp</dimen>
+    <dimen name="dp8">8dp</dimen>
 </resources>

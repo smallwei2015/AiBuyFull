@@ -1,5 +1,6 @@
 package com.vode.aibuy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,8 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.vode.aibuy.activity.MallDetailActivity;
 import com.vode.aibuy.fragment.GoodsListFragment;
 import com.vode.aibuy.fragment.MenuFragment;
+import com.vode.aibuy.fragment.ShoppingCartFragment;
+import com.vode.aibuy.fragment.UserCenterFragment;
 import com.vode.aibuy.utils.BottomNavigationViewHelper;
 import com.vode.aibuy.utils.PhoneUtils;
 
@@ -42,10 +46,12 @@ public class MainActivity extends AppCompatActivity {
                     PhoneUtils.callPhone(MainActivity.this,"10086");
                     return false;
                 case R.id.navigation_notifications:
-
+                    fragmentTransaction.replace(R.id.main_contain,cartFragment);
+                    fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_user:
-
+                    fragmentTransaction.replace(R.id.main_contain,userCenterFragment);
+                    fragmentTransaction.commit();
                     return true;
             }
 
@@ -55,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     public FragmentTransaction fragmentTransaction;
     public GoodsListFragment goodsFragment;
     public MenuFragment menuFragment;
+    public ShoppingCartFragment cartFragment;
+    public UserCenterFragment userCenterFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
         goodsFragment = new GoodsListFragment();
         menuFragment = new MenuFragment();
+        cartFragment = new ShoppingCartFragment();
+        userCenterFragment = new UserCenterFragment();
         fragmentTransaction.add(R.id.main_contain, goodsFragment);
         fragmentTransaction.commit();
 
 
         //startActivity(new Intent(this, SearchActivity.class));
+        startActivity(new Intent(this, MallDetailActivity.class));
     }
 
 

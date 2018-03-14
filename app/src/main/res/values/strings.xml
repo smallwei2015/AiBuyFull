@@ -11,4 +11,7 @@
     <string name="search_hint">请输入要搜索的商品</string>
     <string name="search_name">SearchTraName</string>
     <string name="title">标题</string>
+    <string name="setting">设置</string>
+    <string name="test">测试</string>
+    <string name="new_goods">新品</string>
 </resources>

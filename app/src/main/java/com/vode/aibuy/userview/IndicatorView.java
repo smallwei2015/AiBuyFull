@@ -56,18 +56,43 @@ public class IndicatorView extends View implements ViewPager.OnPageChangeListene
     private void init() {
         mIndicators = new ArrayList<>();
         mCount = 4;
-        mRadius = 20;
-        mStrokeWidth = 0;
-        mSpace = 40;
+        mRadius = 8;
+        mStrokeWidth = 1;
+        mSpace = 10;
 
 
-        viewheight = (int) (mRadius * 2 + 10);
-        viewWidth = (int) (mCount * 2 * mRadius + (mCount - 1) * mSpace);
+        viewheight = (int) (mRadius * 2);
+        viewWidth = (int) (mCount * 2 * (mRadius + mStrokeWidth) + (mCount - 1) * mSpace);
 
         mCirclePaint = new Paint();
         mCirclePaint.setStrokeWidth(mStrokeWidth);
+        mCirclePaint.setAntiAlias(true);
 
         measureIndicator();
+    }
+
+
+    private int getMySize(int defaultSize, int measureSpec) {
+        int mySize = defaultSize;
+        int mode = MeasureSpec.getMode(measureSpec);
+        int size = MeasureSpec.getSize(measureSpec);
+        switch (mode) {
+            case MeasureSpec.UNSPECIFIED: {//如果没有指定大小，就设置为默认大小
+                mySize = defaultSize;
+                break;
+            }
+            case MeasureSpec.AT_MOST: {//如果测量模式是最大取值为size //我们将大小取最大值,你也可以取其他值
+
+                //mySize = size;
+                break;
+            }
+            case MeasureSpec.EXACTLY: {//如果是固定的大小，那就不要去改变它
+
+                mySize = size;
+                break;
+            }
+        }
+        return mySize;
     }
 
 
@@ -75,12 +100,13 @@ public class IndicatorView extends View implements ViewPager.OnPageChangeListene
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        int size = MeasureSpec.getSize(heightMeasureSpec);
-        int mode = MeasureSpec.getMode(widthMeasureSpec);
-        if (mode==MeasureSpec.AT_MOST){
-            init();
-            setMeasuredDimension(viewWidth,viewheight);
-        }
+
+        init();
+
+        int width = getMySize(viewWidth, widthMeasureSpec);
+        int height = getMySize(viewheight, heightMeasureSpec);
+
+        setMeasuredDimension(width, height);
 
 
     }
@@ -130,10 +156,12 @@ public class IndicatorView extends View implements ViewPager.OnPageChangeListene
         mViewPager.addOnPageChangeListener(this);
         int count = mViewPager.getAdapter().getCount();
         setCount(count);
+
     }
 
     private void setCount(int count) {
-        mCount=count;
+        mCount = count;
+        invalidate();
     }
 
 

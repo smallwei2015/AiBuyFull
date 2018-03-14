@@ -1,7 +1,6 @@
 package com.vode.aibuy.activity;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vode.aibuy.R;
+import com.vode.aibuy.adapter.ItemDecoration2;
 import com.vode.aibuy.adapter.SearchGoodsAdapter;
 import com.vode.aibuy.bean.Goods;
 import com.vode.aibuy.present.SearchActivityPresent;
@@ -22,7 +22,7 @@ import com.vode.aibuy.view.BaseView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends BaseActivity<BaseView<List<Goods>>,SearchActivityPresent> implements BaseView<List<Goods>>{
+public class SearchActivity extends BaseActivity<BaseView<List<Goods>>, SearchActivityPresent> implements BaseView<List<Goods>> {
 
     public EditText search;
     public RecyclerView rec;
@@ -55,7 +55,7 @@ public class SearchActivity extends BaseActivity<BaseView<List<Goods>>,SearchAct
 
         rec = findViewById(R.id.rec_search);
         rec.setLayoutManager(new LinearLayoutManager(mActivity));
-        rec.addItemDecoration(new DividerItemDecoration(mActivity,LinearLayoutManager.VERTICAL));
+        rec.addItemDecoration(new ItemDecoration2());
         datas = new ArrayList<>();
         adapter = new SearchGoodsAdapter(mActivity, datas);
         rec.setAdapter(adapter);
@@ -64,11 +64,11 @@ public class SearchActivity extends BaseActivity<BaseView<List<Goods>>,SearchAct
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (adapter.getLayoutType()==0) {
+                if (adapter.getLayoutType() == 0) {
                     adapter.setLayoutType(1);
                     rec.setLayoutManager(new GridLayoutManager(mActivity, 2));
                     rec.setAdapter(adapter);
-                }else {
+                } else {
                     adapter.setLayoutType(0);
                     rec.setLayoutManager(new LinearLayoutManager(mActivity));
 

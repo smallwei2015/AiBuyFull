@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
 
     <TextView
         style="@style/goods_title_style"
@@ -15,11 +17,29 @@
         android:layout_below="@+id/title_goods"
         android:background="@color/bglight"
         android:id="@+id/pager_goods"/>
-    <com.vode.aibuy.userview.IndicatorView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp20"
-        android:layout_below="@+id/pager_goods"
-        android:background="@color/bgdark"/>
 
+    <!--<com.vode.aibuy.userview.IndicatorView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pager_goods"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp10"
+        android:id="@+id/indicator_goods"
+        />-->
+
+    <com.zhouwei.indicatorview.CircleIndicatorView
+        android:id="@+id/indicator_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pager_goods"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_centerHorizontal="true"
+        app:indicatorSelectColor="@color/textmiddle"
+        app:fill_mode="none"
+        app:indicatorBorderWidth="@dimen/dp1"
+        app:indicatorRadius="@dimen/dp3"
+        app:indicatorColor="@color/bgwhite"
+        app:indicatorTextColor="@android:color/white"
+        />
 
 </RelativeLayout>

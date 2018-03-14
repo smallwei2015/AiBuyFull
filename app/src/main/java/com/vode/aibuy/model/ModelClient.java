@@ -2,6 +2,7 @@ package com.vode.aibuy.model;
 
 import com.vode.aibuy.bean.Goods;
 import com.vode.aibuy.bean.Repo;
+import com.vode.aibuy.bean.ShopCartGoods;
 import com.vode.aibuy.bean.User;
 import com.vode.aibuy.utils.RetrofitApi;
 import com.vode.aibuy.utils.RetrofitInteface;
@@ -11,6 +12,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by cj on 2018/3/9.
@@ -64,5 +68,27 @@ public class ModelClient {
                 inteface.onDataLoadFailed(t);
             }
         });
+    }
+
+    public static void loadCartGoods(final LoadDataInteface<List<ShopCartGoods>> inteface) {
+        retrofit.getCartGoodsApi().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response<List<ShopCartGoods>>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        inteface.onDataLoadFailed(e);
+                    }
+
+                    @Override
+                    public void onNext(Response<List<ShopCartGoods>> listResponse) {
+                        List<ShopCartGoods> body = listResponse.body();
+                        inteface.onDataLoaded(body);
+                    }
+                });
     }
 }

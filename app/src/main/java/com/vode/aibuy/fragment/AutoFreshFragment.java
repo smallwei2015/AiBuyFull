@@ -30,7 +30,9 @@ public abstract class AutoFreshFragment extends BaseFragment {
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                fresh(intent);
+                if (intent.getAction().equals(AUTO_REFRESH)) {
+                    fresh(intent);
+                }
             }
         };
         broadcastManager.registerReceiver(receiver, filter);

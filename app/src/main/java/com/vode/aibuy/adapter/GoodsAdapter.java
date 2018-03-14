@@ -1,6 +1,9 @@
 package com.vode.aibuy.adapter;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.vode.aibuy.R;
 import com.vode.aibuy.bean.Goods;
@@ -8,7 +11,9 @@ import com.vode.aibuy.utils.GildeImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerClickListener;
+import com.zhouwei.indicatorview.CircleIndicatorView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,6 +22,8 @@ import java.util.List;
  */
 
 public class GoodsAdapter  extends CommonAdapter<Goods> {
+
+
     public GoodsAdapter(Context context, List<Goods> datas) {
         super(context, datas);
     }
@@ -55,7 +62,16 @@ public class GoodsAdapter  extends CommonAdapter<Goods> {
             case 1:
                 break;
             case 2:
+                ViewPager pager = holder.getView(R.id.pager_goods);
+                ArrayList<View> views = new ArrayList<>();
+                for (int i = 0; i < 3; i++) {
+                    View inflate = LayoutInflater.from(mContext).inflate(R.layout.layout_goods_scroll_item, null);
+                    views.add(inflate);
+                }
 
+                pager.setAdapter(new GoodsViewPagerAdapter(mContext, views));
+                CircleIndicatorView indicatorView =  holder.getView(R.id.indicator_goods);
+                indicatorView.setUpWithViewPager(pager);
                 break;
             default:
 
