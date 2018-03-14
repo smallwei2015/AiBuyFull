@@ -24,8 +24,6 @@
         android:layout_height="@dimen/dp20"
         android:layout_gravity="center"
         android:textSize="@dimen/sp10"
-        android:textColor="@color/bgwhite"
-        android:gravity="center"
         android:text="123"/>
     <LinearLayout
         android:layout_width="match_parent"

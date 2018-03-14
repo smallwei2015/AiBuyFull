@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AiBuy.iml" filepath="$PROJECT_DIR$/AiBuy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AiBuyFull.iml" filepath="$PROJECT_DIR$/.idea/AiBuyFull.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/zxinglite/zxinglite.iml" filepath="$PROJECT_DIR$/zxinglite/zxinglite.iml" />
+      <module fileurl="file://C:\Users\smallwei\AndroidStudioProjects\AiBuyFull\zxinglite\zxinglite.iml" filepath="C:\Users\smallwei\AndroidStudioProjects\AiBuyFull\zxinglite\zxinglite.iml" />
     </modules>
   </component>
 </project>

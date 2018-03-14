@@ -49,5 +49,5 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.github.pinguo-zhouwei:CircleIndicatorView:v1.0.1'
     implementation 'net.wujingchao.android.view:simple-tag-imageview:1.0.1'
-    implementation project(':zxinglite')
+    //implementation project(':zxinglite')
 }

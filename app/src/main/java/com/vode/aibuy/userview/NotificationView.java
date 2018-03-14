@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -67,8 +68,8 @@ public class NotificationView extends TextView {
 
 
 
-        width = getMySize(30, widthMeasureSpec);
-        height = getMySize(30, heightMeasureSpec);
+        width = getMySize(40, widthMeasureSpec);
+        height = getMySize(40, heightMeasureSpec);
 
         if (width>height){
             height=width;
@@ -88,7 +89,22 @@ public class NotificationView extends TextView {
             canvas.drawOval(0,0,width,height, paint);
         }
 
-        super.onDraw(canvas);
+        float textSize = getTextSize();
+
+
+        float textsizePX = getResources().getDisplayMetrics().scaledDensity * textSize + 0.5f;
+        TextPaint textPaint = getPaint();
+        textPaint.setColor(getResources().getColor(R.color.bgwhite));
+        textPaint.setTextAlign(Paint.Align.CENTER);
+
+        Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
+
+        paint.setColor(getResources().getColor(R.color.bgwhite));
+        canvas.drawLine(0,fontMetrics.ascent+height/2,width,fontMetrics.ascent+height/2+5,paint);
+        canvas.drawText(getText().toString(),width/2,height/2+(fontMetrics.bottom-fontMetrics.top)/2-fontMetrics.bottom, textPaint);
+
+
+        //super.onDraw(canvas);
 
 
     }
